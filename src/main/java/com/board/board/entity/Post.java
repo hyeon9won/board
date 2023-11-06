@@ -10,19 +10,16 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Post {
     private long id;
-    private String userName;
     private String userPassword;
     private String title;
     private String contents;
 
     public Post(PostRequestDto requestDto) {
-        this.userName = requestDto.getUserName();
         this.title = requestDto.getTitle();
         this.contents = requestDto.getContents();
     }
 
     public void update(PostRequestDto requestDto) {
-        this.userName = requestDto.getUserName();
         this.title = requestDto.getTitle();
         this.contents = requestDto.getContents();
     }

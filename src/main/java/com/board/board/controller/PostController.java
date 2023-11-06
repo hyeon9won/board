@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -39,8 +40,16 @@ public class PostController {
         return responseList;
     }
 
-    @PutMapping("/post/{id}")
-    public Long updateMemo(@PathVariable Long id, @RequestBody PostRequestDto requestDto) {
+    @GetMapping("/list")
+    public List<PostResponseDto> getAllPosts() {
+        List<PostResponseDto> responseList = postList.values().stream()
+                .map(PostResponseDto::new)
+                .collect(Collectors.toList());
+        return responseList;
+    }
+
+    @PutMapping("/postset")
+    public Long updatePost(@PathVariable Long id, @RequestBody PostRequestDto requestDto) {
         // 메모가 DB에 존재하는지 확인
         if (postList.containsKey(id)) {
             Post post = postList.get(id);
@@ -51,7 +60,7 @@ public class PostController {
         }
     }
 
-    @DeleteMapping("/post/{id}")
+    @DeleteMapping("/postset")
     public Long deletPost(@PathVariable Long id) {
         if (postList.containsKey(id)) {
             postList.remove(id);
