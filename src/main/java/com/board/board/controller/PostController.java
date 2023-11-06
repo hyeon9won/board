@@ -37,7 +37,7 @@ public class PostController {
             PostResponseDto postResponseDto = new PostResponseDto(post);
             return postResponseDto;
         } else {
-            throw new IllegalArgumentException("작성자 이름 또는 비밀번호가 올바르지 않습니다.");
+            throw new IllegalArgumentException("이름 또는 비밀번호가 올바르지 않습니다.");
         }
     }
 
