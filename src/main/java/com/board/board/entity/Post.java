@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Post {
-    private long id;
+    private String userName;
     private String userPassword;
     private String title;
     private String contents;
